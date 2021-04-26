@@ -9,11 +9,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector3 _direction;
     [SerializeField] private float _rotateSpeed = 50;
     [SerializeField] private float _jump = 10;
+    [SerializeField] private float _jumpHigh = 1;
     [SerializeField] private Rigidbody rB;
     
     // Start is called before the first frame update
     private void Start()
-    {        
+    {
+        rB = GetComponent<Rigidbody>();
        
     }
 
@@ -23,13 +25,13 @@ public class PlayerController : MonoBehaviour
         _direction.x = Input.GetAxis("Vertical");
         _direction.z = Input.GetAxis("Horizontal");
 
-        rB = GetComponent<Rigidbody>();
+        var jumpDirection = new Vector3(0, _jumpHigh, 0);
 
         if (rB.velocity.y == 0)
         {
             if (Input.GetButtonDown("Jump"))
             {
-                rB.AddForce(Vector3.up * _jump, ForceMode.Impulse);
+                rB.AddForce(jumpDirection * _jump, ForceMode.Impulse);
             }
         }
     }
