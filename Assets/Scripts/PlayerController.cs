@@ -5,45 +5,34 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    [SerializeField] private float _speed = 5;
-    [SerializeField] private Vector3 _direction;
-    [SerializeField] private float _rotateSpeed = 50;
-    [SerializeField] private float _jump = 10;
-    [SerializeField] private float _jumpHigh = 1;
+    private float _speed = 5;
+    private Vector3 _direction;
+    private Vector3 _rotateVector = new Vector3(0, 1, 0);
+    private float _rotateSpeed = 50;
+    private float _jump = 10;    
     [SerializeField] private Rigidbody rB;
-    
+    private Vector3 _jumpDirection = new Vector3(0, 1, 0);
+   
+
     // Start is called before the first frame update
     private void Start()
     {
-        rB = GetComponent<Rigidbody>();
-       
+        rB = GetComponent<Rigidbody>();       
     }
 
     // Update is called once per frame
     private void Update()
     {
-        _direction.x = Input.GetAxis("Vertical");
-        _direction.z = Input.GetAxis("Horizontal");
-
-        var jumpDirection = new Vector3(0, _jumpHigh, 0);
-
-        if (rB.velocity.y == 0)
-        {
-            if (Input.GetButtonDown("Jump"))
-            {
-                rB.AddForce(jumpDirection * _jump, ForceMode.Impulse);
-            }
-        }
+        if (Input.GetButtonDown("Jump")&& rB.velocity.y == 0)
+         {
+           GetComponent<Rigidbody>().velocity = _jumpDirection * _jump;
+         }   
     }
 
     private void FixedUpdate()
     {
-        var speed = Vector3.right * _direction.x * _speed * Time.deltaTime;
-        transform.Translate(speed);
-
-        var rotate = Vector3.up * _direction.z * _rotateSpeed * Time.deltaTime;
-        transform.Rotate(rotate);
-
+        transform.Translate(Input.GetAxis("Vertical") * _speed * Time.deltaTime, 0, 0);
         
+        transform.Rotate(0, Input.GetAxis("Horizontal") * _rotateSpeed * Time.deltaTime, 0);
     }
 }
