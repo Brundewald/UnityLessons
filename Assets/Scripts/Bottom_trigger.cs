@@ -7,7 +7,7 @@ public class Bottom_trigger : MonoBehaviour
     [SerializeField] private GameObject _gameObject;
     private void OnTriggerEnter(Collider other)
     {
-        var hero = other.GetComponent<CapsuleCollider>();
+        var hero = other.GetComponent<BoxCollider>();
 
         if (hero != null) 
         {

@@ -6,33 +6,39 @@ public class PlayerController : MonoBehaviour
 {
 
     private float _speed = 5;
-    private Vector3 _direction;
-    private Vector3 _rotateVector = new Vector3(0, 1, 0);
-    private float _rotateSpeed = 50;
+        
     private float _jump = 10;    
     [SerializeField] private Rigidbody rB;
     private Vector3 _jumpDirection = new Vector3(0, 1, 0);
-   
+    
+    private const string Horizontal = nameof(Horizontal);
+    private const string Vertical = nameof(Vertical);
+    private bool _onGround;
 
-    // Start is called before the first frame update
-    private void Start()
+       
+    private void Awake()
     {
         rB = GetComponent<Rigidbody>();       
     }
 
-    // Update is called once per frame
     private void Update()
     {
-        if (Input.GetButtonDown("Jump")&& rB.velocity.y == 0)
-         {
-           GetComponent<Rigidbody>().velocity = _jumpDirection * _jump;
-         }   
+        transform.Translate(Vector3.right * Input.GetAxis(Horizontal) * _speed * Time.deltaTime + Vector3.forward * Input.GetAxis(Vertical) * _speed * Time.deltaTime);
+           
+        if (Input.GetButtonDown("Jump") && _onGround)
+        {
+           rB.AddForce(_jumpDirection * _jump, ForceMode.Impulse);
+            _onGround = false;
+        }   
     }
 
-    private void FixedUpdate()
+    private void OnCollisionEnter(Collision other)
     {
-        transform.Translate(Input.GetAxis("Vertical") * _speed * Time.deltaTime, 0, 0);
-        
-        transform.Rotate(0, Input.GetAxis("Horizontal") * _rotateSpeed * Time.deltaTime, 0);
+        if (other.gameObject.tag == "Ground") 
+        {
+            _onGround = true;
+        }
     }
+
+
 }

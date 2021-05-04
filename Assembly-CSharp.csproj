@@ -58,8 +58,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Bottom_trigger.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\Test.cs" />
     <Compile Include="Assets\Scripts\Mouse_Look_Controll.cs" />
+    <Compile Include="Assets\Scripts\Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
