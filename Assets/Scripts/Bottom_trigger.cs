@@ -13,16 +13,6 @@ public class Bottom_trigger : MonoBehaviour
         {
             other.transform.position = _gameObject.transform.position;
         }
-    }
-
-    //private void OnTriggerExit(Collider other)
-    //{
-        
-    //}
-
-    //private void OnTriggerStay(Collider other)
-    //{
-        
-    //}
+    }   
 
 }
