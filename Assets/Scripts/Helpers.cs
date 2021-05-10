@@ -6,14 +6,13 @@ public class Helpers : MonoBehaviour
 {
     [SerializeField] GameObject _firstObj;
     [SerializeField] GameObject _secondObj;
-    
-    private float _distance;
-   
+    private float _attentionDistance = 10;
+       
     void Update()
     {
-        _distance = Vector3.Distance(_firstObj.transform.position, _secondObj.transform.position); // определяем дистанцию до героя
+        var distance = Vector3.Distance(_firstObj.transform.position, _secondObj.transform.position); // определяем дистанцию до героя
 
-        if (_distance <= 15) // проверяем что герой в радиусе
+        if (distance <= _attentionDistance) // проверяем что герой в радиусе
         {
             var relativePosition = _secondObj.transform.position - transform.position;
             var rotation = Quaternion.LookRotation(relativePosition);

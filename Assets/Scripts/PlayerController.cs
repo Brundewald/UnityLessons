@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     
     private const string Horizontal = nameof(Horizontal);
     private const string Vertical = nameof(Vertical);
+    private const string Jump = nameof(Jump);
     private bool _onGround;
 
        
@@ -25,7 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         transform.Translate(Vector3.right * Input.GetAxis(Horizontal) * _speed * Time.deltaTime + Vector3.forward * Input.GetAxis(Vertical) * _speed * Time.deltaTime);
            
-        if (Input.GetButtonDown("Jump") && _onGround)
+        if (Input.GetButtonDown(Jump) && _onGround)
         {
            rB.AddForce(_jumpDirection * _jump, ForceMode.Impulse);
             _onGround = false;
