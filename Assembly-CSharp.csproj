@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\EnemyBehavior.cs" />
     <Compile Include="Assets\Scripts\EnemyTrigger.cs" />
     <Compile Include="Assets\Scripts\PedalScript.cs" />
+    <Compile Include="Assets\Scripts\EnemyMovement.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
