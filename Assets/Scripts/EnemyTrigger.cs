@@ -5,8 +5,7 @@ using UnityEngine;
 public class EnemyTrigger : MonoBehaviour
 {
     [SerializeField] GameObject _Pedal;
-    [SerializeField] GameObject _firstObj;
-    [SerializeField] GameObject _secondObj;
+    [SerializeField] GameObject _enemy;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,8 +13,11 @@ public class EnemyTrigger : MonoBehaviour
 
         if (hero != null)
         {
-            _firstObj.SetActive(true);
-            _secondObj.SetActive(true);
+            if (_enemy.activeInHierarchy == false) 
+            {
+                _enemy.SetActive(true);
+            }
+            
             Destroy(_Pedal);
         }        
     }

@@ -61,10 +61,11 @@
     <Compile Include="Assets\Scripts\MouseLookControll.cs" />
     <Compile Include="Assets\Scripts\Helpers.cs" />
     <Compile Include="Assets\Scripts\SideChanger.cs" />
+    <Compile Include="Assets\Scripts\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\EnemyBehavior.cs" />
     <Compile Include="Assets\Scripts\EnemyTrigger.cs" />
     <Compile Include="Assets\Scripts\PedalScript.cs" />
-    <Compile Include="Assets\Scripts\EnemyMovement.cs" />
+    <Compile Include="Assets\Scripts\WallTriger.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
