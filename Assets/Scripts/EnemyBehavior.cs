@@ -19,7 +19,8 @@ public class EnemyBehavior : MonoBehaviour
 
     private float _engageDistance = 2f;
     private float _attentionDistance = 10f;
-    private float _followDistance = 5f;
+    private float _followDistance = 7f;
+    private float _delay = 5f;
     private bool _targetSet = false;
 
     private void Awake()
@@ -47,17 +48,13 @@ public class EnemyBehavior : MonoBehaviour
         }
         else
         {
-            
             Patrole();
         }
-
     }
 
     private void Patrole()
     {
         float complete = 1;
-
-       
 
         if ((_turret.pathEndPosition - _turret.transform.position).magnitude <= complete)
         { 
@@ -87,6 +84,10 @@ public class EnemyBehavior : MonoBehaviour
         var relativePosition = _secondObj.transform.position - transform.position;
         var rotation = Quaternion.LookRotation(relativePosition);
         transform.rotation = rotation; // позволяет направить взгляд объекта на другой объект
+        if (distance > _engageDistance && distance < _attentionDistance)
+        {
+            _targetSet = false;
+        }
 
     }
 

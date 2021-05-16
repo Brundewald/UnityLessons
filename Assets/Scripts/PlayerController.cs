@@ -7,7 +7,6 @@ using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
-
     [SerializeField] private Rigidbody _rB;
     
     private Vector3 _jumpDirection = new Vector3(0, 1, 0);
@@ -15,15 +14,10 @@ public class PlayerController : MonoBehaviour
     private float _jump = 10;
     private bool _onGround;
 
-
     private const string Horizontal = nameof(Horizontal);
     private const string Vertical = nameof(Vertical);
     private const string Jump = nameof(Jump);
-    
-
-    
-
-       
+   
     private void Awake()
     {
         _rB = GetComponent<Rigidbody>();
