@@ -1,25 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+
+
 
 public class PlayerController : MonoBehaviour
 {
-
-    private float _speed = 5;
-        
-    private float _jump = 10;    
-    [SerializeField] private Rigidbody rB;
-    private Vector3 _jumpDirection = new Vector3(0, 1, 0);
+    [SerializeField] private Rigidbody _rB;
     
+    private Vector3 _jumpDirection = new Vector3(0, 1, 0);
+    private float _speed = 5;
+    private float _jump = 10;
+    private bool _onGround;
+
     private const string Horizontal = nameof(Horizontal);
     private const string Vertical = nameof(Vertical);
     private const string Jump = nameof(Jump);
-    private bool _onGround;
-
-       
+   
     private void Awake()
     {
-        rB = GetComponent<Rigidbody>();       
+        _rB = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -28,8 +29,8 @@ public class PlayerController : MonoBehaviour
            
         if (Input.GetButtonDown(Jump) && _onGround)
         {
-           rB.AddForce(_jumpDirection * _jump, ForceMode.Impulse);
-            _onGround = false;
+           _rB.AddForce(_jumpDirection * _jump, ForceMode.Impulse);
+           _onGround = false;
         }   
     }
 
