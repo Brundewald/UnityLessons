@@ -64,9 +64,10 @@
     <Compile Include="Assets\Scripts\SideChanger.cs" />
     <Compile Include="Assets\Scripts\EnemyBehavior.cs" />
     <Compile Include="Assets\Scripts\EnemyTrigger.cs" />
+    <Compile Include="Assets\Scripts\AudioControl.cs" />
     <Compile Include="Assets\Scripts\WallTriger.cs" />
     <Compile Include="Assets\Scripts\PedalScript.cs" />
-    <Compile Include="Assets\Scripts\AudioControl.cs" />
+    <Compile Include="Assets\Scripts\PauseMenu.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
