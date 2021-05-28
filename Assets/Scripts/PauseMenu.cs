@@ -7,7 +7,8 @@ using System;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] GameObject _pauseMenu;
+    [SerializeField] private GameObject _pauseMenu;
+    [SerializeField] private GameObject _player;
     [SerializeField] private Button _startButton;    
     [SerializeField] private Button _quitButton;
 
@@ -22,26 +23,20 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {            
-            if (_isPaused)
+            if (!_isPaused)
             {
-                ResumeGame();
+                PauseGame();
+                _startButton.onClick.AddListener(ResumeGame);
+                _quitButton.onClick.AddListener(Quit);
             }
 
             else
             {
-                PauseGame();
+                ResumeGame();
+                _startButton.onClick.RemoveAllListeners();
+                _quitButton.onClick.RemoveAllListeners();
             }          
         }
-        if (_isPaused)
-        {
-            
-        }
-        else 
-        {
-            _startButton.onClick.AddListener(ResumeGame);
-            _quitButton.onClick.AddListener(Quit);
-        }
-        
     }
 
     private void PauseGame()
@@ -49,13 +44,19 @@ public class PauseMenu : MonoBehaviour
         _pauseMenu.SetActive(true);
         _isPaused = true;
         Time.timeScale = 0f;
+        Cursor.visible = true;
+        _player.GetComponent<MouseLookControll>().enabled = false; 
     }
 
     private void ResumeGame()
     {
+        _player.GetComponent<MouseLookControll>().enabled = true;
         _pauseMenu.SetActive(false);
         _isPaused = false;
         Time.timeScale = 1f;
+        Cursor.visible = false;
+        _startButton.onClick.RemoveAllListeners();
+        _quitButton.onClick.RemoveAllListeners();
     }
 
     private void Quit() 

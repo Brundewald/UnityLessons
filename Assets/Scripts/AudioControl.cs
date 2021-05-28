@@ -10,7 +10,7 @@ public class AudioControl : MonoBehaviour
     [SerializeField] private Slider _gain;
     [SerializeField] private AudioSource _audioSource;
     
-    private static AudioControl _instance;
+    private AudioControl _instance;
     private float _volume;
 
     private void Awake()
